@@ -1,0 +1,8 @@
+.InputContainer {
+    height: 15vh;
+    width: 100%;
+    background-color: mediumseagreen;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}

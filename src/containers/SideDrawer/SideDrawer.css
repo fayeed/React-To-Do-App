@@ -1,0 +1,25 @@
+.SideDrawer {
+    height: 100vh;
+    width: 30%;
+    background-color: dodgerblue;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(90%);
+    transition: all .3s ease-out;
+}
+
+.SideDrawer:hover {
+    transform: translateX(85%);
+}
+
+.SideDrawerActive {
+    height: 100vh;
+    width: 30%;
+    background-color: dodgerblue;
+    position: fixed;
+    right: 0;
+    top: 0;
+    transform: translateX(0);
+    transition: all .3s ease-out;
+}

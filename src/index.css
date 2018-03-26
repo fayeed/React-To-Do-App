@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-size: 62.5%;
 }
 
 *,
@@ -12,5 +13,6 @@ html {
 
 body {
   font-family: 'Dosis', sans-serif;
-  font-size: 62.5%;
+  font-size: 1.6em;
+  font-weight: 400;
 }

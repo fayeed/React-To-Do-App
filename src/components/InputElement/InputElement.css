@@ -1,0 +1,31 @@
+.InputElement {
+    height: 100px;
+    margin: 20px;
+}
+
+.Label {
+    font-size: 1em;
+    display: block;
+    transition: all .2s ease-in-out;
+    transform: translateY(-.2em);
+}
+
+.Input {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1em;
+    border-radius: 5px;
+    padding: 10px 15px;
+    border: none;
+    transition: all .2s ease-in;
+}
+
+.Input:focus {
+    box-shadow: 0 .1em 2em rgba(0, 0, 0, .2);
+    transform: translateY(-1px)
+}
+
+.Input:placeholder-shown + .Label {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10em);
+}
