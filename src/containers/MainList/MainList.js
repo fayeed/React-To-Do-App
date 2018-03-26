@@ -11,7 +11,10 @@ class MainList extends Component {
             return (<Item message={ele.message} 
                             category={ele.category} 
                             time={ele.time} 
-                            key={ele.id}/>)
+                            key={ele.id}
+                            id={ele.id}
+                            complete={this.props.complete}
+                            canceled={this.props.canceled}/>)
         });
 
         return (
