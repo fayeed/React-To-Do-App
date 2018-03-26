@@ -1,13 +1,14 @@
 .InputElement {
-    height: 100px;
+    height: 100%;
     margin: 20px;
 }
 
 .Label {
+    color: #fff;
     font-size: 1em;
     display: block;
     transition: all .2s ease-in-out;
-    transform: translateY(-.2em);
+    transform: translateY(.5em) translateX(1em);
 }
 
 .Input {
@@ -20,12 +21,12 @@
 }
 
 .Input:focus {
-    box-shadow: 0 .1em 2em rgba(0, 0, 0, .2);
+    box-shadow: 0 .5em 1em rgba(0, 0, 0, .2);
     transform: translateY(-1px)
 }
 
-.Input:placeholder-shown + .Label {
+.Input:placeholder-shown ~ .Label {
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10em);
+    transform: translateY(-2em) translateX(1em);
 }
