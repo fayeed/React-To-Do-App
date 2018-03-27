@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import SignUp from '../../components/SignUp/SignUp';
+import Backdrop from '../../components/BackDrop/Backdrop';
 
 import classes from './SideDrawer.css';
 
@@ -16,8 +18,13 @@ class SideDrawer extends Component {
     
     render() {
         return (
-            <div className={!this.state.drawer ? classes.SideDrawer : classes.SideDrawerActive} 
-            onClick={this.toggleDrawer}>SideDrawer</div>
+            <React.Fragment>
+                {this.state.drawer ? <Backdrop click={this.toggleDrawer}/> : null}
+                <div className={!this.state.drawer ? classes.SideDrawer : classes.SideDrawerActive} 
+                onClick={!this.state.drawer ? this.toggleDrawer : null}>
+                    <SignUp />
+                </div>
+            </React.Fragment>
         );
     }
 }

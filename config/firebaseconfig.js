@@ -1,3 +1,5 @@
+import * as firebase from 'firebase';
+
 const config = {
     apiKey: "AIzaSyCRaiBxXXQgw9dSyZBIobMkSDgG9CyOZKk",
     authDomain: "react-to-do-list-app.firebaseapp.com",
@@ -7,4 +9,6 @@ const config = {
     messagingSenderId: "934647851460"
   };
 
-  export default config;
+  firebase.initializeApp(config);
+
+  export default firebase;
