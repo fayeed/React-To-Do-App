@@ -16,7 +16,8 @@ class App extends Component {
     completed: [],
     canceled: [],
     isLoggedIn: false,
-    email: ''
+    email: '',
+    current:1
   }
 
   removeItem = (id) => {
@@ -57,16 +58,33 @@ class App extends Component {
     
   }
 
+  changeList = (i) => {
+    console.log('cliked')
+    this.setState({current: i});
+  }
+
   render() {
+
+    let items = this.state.items;
+
+    if(this.state.current === 1) {
+      items = this.state.items
+    } else if(this.state.current === 2){
+      items = this.state.completed
+    } else if(this.state.current === 3) {
+      items = this.state.canceled
+    }
 
     return (
       <main>
         <MainList 
-          items={this.state.items} 
+          items={items} 
           complete={this.completeItem}
           canceled={this.removeItem}/>
         <InputContainer addItem={this.addItem}/>
-        <SideDrawer />
+        <SideDrawer 
+          changeTo={this.changeList}
+          logged={this.state.isLoggedIn}/>
       </main>
     );
   }

@@ -1,9 +1,24 @@
 .SignUp{
     text-align: center;
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
+}
+
+.SignUp h1 {
+    color: #fff;
+    margin-top: 1em;
+    font-size: 3em;
 }
 
 .SignUp form {
     text-align: left;
+    margin-top: 3em;
 }
+
+.btns {
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+}
+
+

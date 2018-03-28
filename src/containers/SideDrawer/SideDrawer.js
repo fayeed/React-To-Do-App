@@ -7,7 +7,7 @@ import classes from './SideDrawer.css';
 class SideDrawer extends Component {
 
     state = {
-        drawer : false
+        drawer : true
     }
 
     toggleDrawer = () => {
@@ -22,7 +22,10 @@ class SideDrawer extends Component {
                 {this.state.drawer ? <Backdrop click={this.toggleDrawer}/> : null}
                 <div className={!this.state.drawer ? classes.SideDrawer : classes.SideDrawerActive} 
                 onClick={!this.state.drawer ? this.toggleDrawer : null}>
-                    <SignUp />
+
+                    <SignUp 
+                        changeTo={this.props.changeTo}
+                        logged={this.props.logged}/>
                 </div>
             </React.Fragment>
         );

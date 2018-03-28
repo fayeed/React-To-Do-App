@@ -38,6 +38,7 @@ const inputElement = (props) => {
                         element = <button 
                                     className={classes.Button} 
                                     type='submit'
+                                    style={props.style}
                                     onClick={props.reset}>{props.label}</button>
                     break;
             default:
