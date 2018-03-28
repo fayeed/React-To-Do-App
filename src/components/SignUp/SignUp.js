@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Input from '../InputElement/InputElement';
 import Controls from '../Controls/Controls';
+import config from '../../firebase/firebaseconfig';
 
 import classes from './SignUp.css';
 
@@ -10,6 +11,44 @@ class SignUp extends Component{
         email: '',
         password: '',
     }
+
+
+database = config.database();
+
+writeUserData = (e, email, password) => {
+    e.preventDefault()
+    email = email.replace(/\./i, 'j')
+    this.database.ref('users/' + email).set({
+      email: email,
+      password: password
+    }).then(
+        this.setState({email: email,
+                        password: password})
+    );
+}
+
+
+getUserData = (e, email, password) => {
+    e.preventDefault();
+    email = email.replace(/\./i, 'j')
+    this.database.ref('/users/' + email).once('value').then(snapshot => {
+        if(snapshot.val() === null){
+            console.log('cliked')
+            return false;
+        } else if(snapshot.val().email !== email && snapshot.val().password !== password) {
+            console.log('cliked 1')
+            return false;
+        } else {
+            console.log('cliked 2')
+            this.setState({email: email,
+                password: password})
+            this.props.toggleLogged()
+            return true;
+        }
+      }).catch((e) => {
+          console.log(e);
+      });
+}
 
     inputChanged = (e, id) => {
         e.preventDefault();
@@ -59,11 +98,13 @@ class SignUp extends Component{
                                 style={{marginLeft:'0'}}
                                 type='button'
                                 label='LogIn'
+                                reset={(e) => this.getUserData(e, this.state.email, this.state.password)}
                             /> 
                             <Input 
                                 style={{marginLeft:'0'}}
                                 type='button'
                                 label='Register'
+                                reset={(e) => this.writeUserData(e, this.state.email, this.state.password)}
                             /> 
                         </div>
                     </form>
@@ -76,7 +117,8 @@ class SignUp extends Component{
                 
                 <Controls 
                         signout={true}
-                        changeTo={this.props.changeTo} />}
+                        changeTo={this.props.changeTo} 
+                        logOut={this.props.toggleLogged}/>}
             </div>
         );
     }

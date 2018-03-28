@@ -63,6 +63,10 @@ class App extends Component {
     this.setState({current: i});
   }
 
+  toggleLogged = () => {
+    this.setState({isLoggedIn:!this.state.isLoggedIn})
+  }
+
   render() {
 
     let items = this.state.items;
@@ -84,7 +88,8 @@ class App extends Component {
         <InputContainer addItem={this.addItem}/>
         <SideDrawer 
           changeTo={this.changeList}
-          logged={this.state.isLoggedIn}/>
+          logged={this.state.isLoggedIn}
+          toggleLogged={this.toggleLogged}/>
       </main>
     );
   }

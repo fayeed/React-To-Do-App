@@ -44,7 +44,8 @@ const Controls = (props) => {
                 props.signout ? <Input 
                 style={loggedOut}
                 type='button'
-                label='SignOut' /> : null
+                label='SignOut'
+                reset={props.logOut} /> : null
             }
         </div>
     );

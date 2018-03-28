@@ -7,7 +7,7 @@ import classes from './SideDrawer.css';
 class SideDrawer extends Component {
 
     state = {
-        drawer : true
+        drawer : false
     }
 
     toggleDrawer = () => {
@@ -25,7 +25,8 @@ class SideDrawer extends Component {
 
                     <SignUp 
                         changeTo={this.props.changeTo}
-                        logged={this.props.logged}/>
+                        logged={this.props.logged}
+                        toggleLogged={this.props.toggleLogged}/>
                 </div>
             </React.Fragment>
         );

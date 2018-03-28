@@ -37,7 +37,7 @@ const inputElement = (props) => {
             case 'button':
                         element = <button 
                                     className={classes.Button} 
-                                    type='submit'
+                                    // type='submit'
                                     style={props.style}
                                     onClick={props.reset}>{props.label}</button>
                     break;
