@@ -26,7 +26,9 @@ class SideDrawer extends Component {
                     <SignUp 
                         changeTo={this.props.changeTo}
                         logged={this.props.logged}
-                        toggleLogged={this.props.toggleLogged}/>
+                        toggleLogged={this.props.toggleLogged}
+                        changeEmail={this.props.changeEmail}
+                        startUpdate={this.props.startUpdate}/>
                 </div>
             </React.Fragment>
         );

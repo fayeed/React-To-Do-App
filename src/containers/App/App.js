@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import MainList from '../MainList/MainList';
 import InputContainer from '../InputContainer/InputContainer';
 import SideDrawer from '../SideDrawer/SideDrawer';
+import config from '../../firebase/firebaseconfig';
+import * as firebase from 'firebase';
 
 import './App.css';
 
@@ -20,52 +22,124 @@ class App extends Component {
     current:1
   }
 
+  database = config.database();
+
+  changeEmail = (email) => {
+    this.setState({email})
+  }
+
+  pushList = (ele, type) => {
+    //e.preventDefault()
+    //email = email.replace(/\./i, 'j')
+    let todos = []
+
+    console.log(todos)
+
+    this.database.ref(`/users/${this.state.email}`).once('value').then((todo) => {
+      if(type === 'items') {
+        todos = todo.val().items || []
+        console.log(todos)
+      } else if(type === 'completed'){
+        todos = todo.val().completed || []
+        console.log(todos)
+      } else if(type === 'canceled') {
+        todos = todo.val().canceled || []
+        console.log(todos)
+      }
+      
+      //let key = this.database.ref(`/users/test@testjcom`).push().key
+
+      todos.push({id:ele.id, message:ele.message, category: ele.category,
+         time: firebase.database.ServerValue.TIMESTAMP, urgency: ele.urgency})
+
+      this.database.ref(`users/${this.state.email}/${type}`).set(todos)
+      console.log('complete')
+    })
+  }
+
+  removeList = (id, type) => {
+    this.database.ref(`/users/${this.state.email}/${type}`).orderByChild('id').equalTo(id)
+      .once('value').then(snapshot => {
+        snapshot.forEach(childSnapshot => {
+        //remove each child
+        this.database.ref(`/users/${this.state.email}/${type}`).child(childSnapshot.key).remove();
+      });
+    });
+  }
+
+  readList = (type) => {
+    this.database.ref(`/users/${this.state.email}/${type}`).once('value').then((todo) => {
+      if(type === 'items') {
+        this.setState({items: todo.val() || []})
+      } else if(type === 'completed'){
+        this.setState({completed: todo.val() || []})
+      } else if(type === 'canceled') {
+        this.setState({canceled: todo.val() || []})
+      }
+      //this.setState({items: todo.val() || []})
+      console.log('read : ', todo.val() || [])
+    })
+  }
+
   removeItem = (id) => {
     // remove the item in he list
     // update the content
-    if(!this.isLoggedIn){
       let i = [...this.state.items].filter(ele => ele.id !== id)
       let s = [...this.state.canceled]
-      s.push([...this.state.items].filter(ele => ele.id === id)[0])
+      let filtered = [...this.state.items].filter(ele => ele.id === id)[0]
+      console.log(filtered)
+      s.push(filtered)
+
+    if(this.state.isLoggedIn){
+      this.pushList(filtered, 'canceled')
+      this.removeList(id, 'items')
       this.setState({canceled: s, items: i})
-    } else {
-      // someshit
     }
   }
 
   completeItem = (id) => {
-    if(!this.isLoggedIn){
-      let i = [...this.state.items].filter(ele => ele.id !== id)
+
+    let i = [...this.state.items].filter(ele => ele.id !== id)
       let s = [...this.state.completed]
-      s.push([...this.state.items].filter(ele => ele.id === id)[0])
+      let filtered = [...this.state.items].filter(ele => ele.id === id)[0]
+      console.log(filtered)
+      s.push(filtered)
+
+    if(this.state.isLoggedIn){
+      this.pushList(filtered, 'completed')
+      this.removeList(id, 'items')
       this.setState({completed: s, items: i})
-    } else {
-      // someshit
     }
   }
 
   addItem = (e, ele) => {
     // add item in the list
     // update the content
-    if(!this.isLoggedIn){
       e.preventDefault()
       let s = [...this.state.items]
       s.push(ele)
       this.setState({items: s})
-    } else {
-      // firebase rules here
+
+    if(this.state.isLoggedIn){
+      this.pushList(ele, 'items')
     }
-    
   }
 
   changeList = (i) => {
-    console.log('cliked')
     this.setState({current: i});
   }
 
   toggleLogged = () => {
     this.setState({isLoggedIn:!this.state.isLoggedIn})
   }
+
+  componentDidMount () {
+    console.log('component Did mount')
+    this.readList('items');
+    this.readList('completed');
+    this.readList('canceled');
+  }
+
 
   render() {
 
@@ -89,7 +163,9 @@ class App extends Component {
         <SideDrawer 
           changeTo={this.changeList}
           logged={this.state.isLoggedIn}
-          toggleLogged={this.toggleLogged}/>
+          toggleLogged={this.toggleLogged}
+          changeEmail={this.changeEmail}
+          startUpdate={this.readList}/>
       </main>
     );
   }

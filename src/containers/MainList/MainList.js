@@ -7,7 +7,8 @@ class MainList extends Component {
 
     render() {
 
-        const items = this.props.items.map(ele => {
+
+        const items = this.props.items !== null ? this.props.items.map(ele => {
             return (<Item message={ele.message} 
                             category={ele.category} 
                             time={ele.time} 
@@ -15,7 +16,7 @@ class MainList extends Component {
                             id={ele.id}
                             complete={this.props.complete}
                             canceled={this.props.canceled}/>)
-        });
+        }) : null;
 
         return (
             <div className={classes.MainList}>

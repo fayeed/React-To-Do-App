@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import InputElement from '../../components/InputElement/InputElement';
+import config from '../../firebase/firebaseconfig';
 
 import classes from './InputContainer.css';
 
@@ -37,13 +38,18 @@ class InputContainer extends Component {
         })
     }
 
+    database = config.database();
+
     render() {
+        const key = this.database.ref(`/users/test@testjcom`).push().key
+
         return (
+
             <div className={classes.InputContainer}>
                 <form onSubmit={(e) => this.props.addItem(e, {message: this.state.message, 
                                                         category: this.state.category,
                                                         urgency: this.state.urgency,
-                                                        id: this.id++,
+                                                        id: key,
                                                         time:'09/2/18'})}>
                     <InputElement
                         id='1'

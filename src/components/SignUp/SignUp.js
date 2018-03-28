@@ -18,6 +18,7 @@ database = config.database();
 writeUserData = (e, email, password) => {
     e.preventDefault()
     email = email.replace(/\./i, 'j')
+    this.props.changeEmail(email)
     this.database.ref('users/' + email).set({
       email: email,
       password: password
@@ -33,16 +34,17 @@ getUserData = (e, email, password) => {
     email = email.replace(/\./i, 'j')
     this.database.ref('/users/' + email).once('value').then(snapshot => {
         if(snapshot.val() === null){
-            console.log('cliked')
             return false;
         } else if(snapshot.val().email !== email && snapshot.val().password !== password) {
-            console.log('cliked 1')
             return false;
         } else {
-            console.log('cliked 2')
+            this.props.changeEmail(email)
             this.setState({email: email,
                 password: password})
             this.props.toggleLogged()
+            this.props.startUpdate('items')
+            this.props.startUpdate('completed')
+            this.props.startUpdate('canceled')
             return true;
         }
       }).catch((e) => {
