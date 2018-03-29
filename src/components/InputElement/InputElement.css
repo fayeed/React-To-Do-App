@@ -2,6 +2,8 @@
     /* height: 100%; */
     align-self: center;
     display: inline-block;
+    width: 80%;
+    margin: 0 auto;
 }
 
 .Label {
@@ -20,6 +22,7 @@
     border: none;
     transition: all .2s ease-in;
     color: darkslategrey;
+    width: 100%;
 }
 
 .Input:focus {
@@ -40,8 +43,9 @@
     border: none;
     border-radius: 5px;
     transform: translateY(-.45em);
-    margin-left: 2em;
+    width: 100%;
     color: darkslategrey;
+    margin-top: .4em;
 }
 
 .Button {
@@ -54,9 +58,107 @@
     margin-left: 8em;
     transition: all .2s;
     color: darkslategrey;
+    margin-top: .4em;
+    /* width: 100%; */
+}
+
+.ButtonWidth {
+    width: 100%;
+    margin: 0 auto;
 }
 
 .Button:active {
     box-shadow: 0 .5em 1em rgba(0, 0, 0, .2);
     transform: translateY(-8px)
+}
+
+
+@media (min-width: 320px) {
+    .Label {
+        font-size: 0.5em;
+        transform: translateY(-6em) translateX(.5em);
+    }
+    
+    .Input {
+        font-size: .8em;
+        padding: .5em .8em;
+    }
+
+    .Input:placeholder-shown ~ .Label {
+        transform: translateY(-2em) translateX(.5em);
+    }
+
+    .Dropdown {
+        font-size: .8em;
+        padding: .3em 1em;
+        width: 80%;
+    }
+
+    .Button {
+        padding: .4em 1em;
+        font-size: .8em;
+        transform: translateY(-.45em);
+        margin-left: 0em;
+    }
+}
+
+@media (min-width: 768px) {
+    .Label {
+        font-size: 0.7em;
+        transform: translateY(-6em) translateX(.5em);
+    }
+    
+    .Input {
+        font-size: 1em;
+        padding: .7em .9em;
+    }
+
+    .Input:placeholder-shown ~ .Label {
+        transform: translateY(-2em) translateX(.5em);
+    }
+
+    .Dropdown {
+        font-size: .9em;
+        padding: .7em 1em;
+        width: 80%;
+    }
+
+    .Button {
+        padding: .7em 1.4em;
+        font-size: .9em;
+        transform: translateY(-.45em);
+        margin-left: 0em;
+    }
+}
+
+@media (min-width: 1024px) {
+
+    .Dropdown {
+        font-size: .9em;
+        padding: .9em 1.2em;
+        width: 80%;
+    }
+
+    .Button {
+        padding: .9em 1.9em;
+        font-size: .9em;
+        transform: translateY(-.45em);
+        margin-left: 0em;
+    }
+}
+
+@media (min-width: 1366px) {
+
+    .Dropdown {
+        font-size: 1em;
+        padding: 1em 1.5em;
+        width: 80%;
+    }
+    
+    .Button {
+        padding: 1em 2.5em;
+        font-size: 1em;
+        margin-left: 0em;
+        /* width: 100%; */
+    }
 }

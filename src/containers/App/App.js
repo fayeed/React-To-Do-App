@@ -46,11 +46,11 @@ class App extends Component {
         todos = todo.val().canceled || []
         console.log(todos)
       }
-      
-      //let key = this.database.ref(`/users/test@testjcom`).push().key
+
+      const d = new Date();
 
       todos.push({id:ele.id, message:ele.message, category: ele.category,
-         time: firebase.database.ServerValue.TIMESTAMP, urgency: ele.urgency})
+         time: `${d.getDate()}/${d.getMonth()}/${d.getFullYear}`, urgency: ele.urgency})
 
       this.database.ref(`users/${this.state.email}/${type}`).set(todos)
       console.log('complete')
@@ -94,6 +94,8 @@ class App extends Component {
       this.pushList(filtered, 'canceled')
       this.removeList(id, 'items')
       this.setState({canceled: s, items: i})
+    } else {
+      this.setState({canceled: s, items: i})
     }
   }
 
@@ -108,6 +110,8 @@ class App extends Component {
     if(this.state.isLoggedIn){
       this.pushList(filtered, 'completed')
       this.removeList(id, 'items')
+      this.setState({completed: s, items: i})
+    } else {
       this.setState({completed: s, items: i})
     }
   }
@@ -135,9 +139,9 @@ class App extends Component {
 
   componentDidMount () {
     console.log('component Did mount')
-    this.readList('items');
-    this.readList('completed');
-    this.readList('canceled');
+    // this.readList('items');
+    // this.readList('completed');
+    // this.readList('canceled');
   }
 
 

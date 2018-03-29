@@ -36,7 +36,9 @@ const inputElement = (props) => {
                 break;
             case 'button':
                         element = <button 
-                                    className={classes.Button} 
+                                    // className={!props.width ? classes.Button : 
+                                    //     [classes.Button, classes.ButtonWidth].join(' ')} 
+                                    className={classes.Button}
                                     // type='submit'
                                     style={props.style}
                                     onClick={props.reset}>{props.label}</button>
@@ -47,7 +49,7 @@ const inputElement = (props) => {
         }
 
         return (
-            <div className={classes.InputElement} style={{marginLeft: '2em'}}>
+            <div className={classes.InputElement}>
                 {element}
             </div>
         );

@@ -1,16 +1,18 @@
 import React from 'react';
 
+import cancelLogo from '../../assets/svg/cancel.svg'
+import doneLogo from '../../assets/svg/checked.svg'
 import classes from './Item.css';
 
 const Item = (props) => {
     return (
         <div className={classes.Item}>
             <div 
-                className={classes.Item__close}
-                onClick={() => props.canceled(props.id)}><span>Close</span></div>
+                className={[classes.Item__btn, classes.Item__close].join(" ")}
+                onClick={() => props.canceled(props.id)}><img src={cancelLogo} alt='cancel'/></div>
             <div 
-                className={classes.Item__done} 
-                onClick={() => props.complete(props.id)}><span>Done</span></div>
+                className={[classes.Item__btn, classes.Item__done].join(" ")} 
+                onClick={() => props.complete(props.id)}><img src={doneLogo} alt='check'/></div>
             <div className={classes.Item__content}>
                 <div>
                     <h3 className={classes.Item__message}>{props.message}</h3>

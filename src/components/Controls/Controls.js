@@ -6,9 +6,9 @@ import classes from './Controls.css';
 const Controls = (props) => {
 
     const newBtn= {
-        marginLeft:'0',
+        marginLeft:'0em',
         display:'block',
-        width:'300px',
+        width:'100%',
         marginBottom: '1em'
     }
 
@@ -17,13 +17,14 @@ const Controls = (props) => {
                     position: 'fixed',
                     bottom: '0',
                     left: '0',
-                    marginLeft: '4.5em'        
+                    marginLeft: '0em'        
                 }
 
     return (
-        <div className={!props.signout ? classes.Controls : classes.ControlsActive}>
+        <div style={{marginLeft: 0}} className={!props.signout ? classes.Controls : classes.ControlsActive}>
             <Input 
                 style={newBtn}
+                width={true}
                 type='button'
                 label='List'
                 reset={() => props.changeTo(1)}

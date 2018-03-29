@@ -54,7 +54,7 @@ class InputContainer extends Component {
                     <InputElement
                         id='1'
                         type='input'
-                        style={{width:'500px'}} 
+                        // style={{width:'300px'}} 
                         name='item' 
                         content='To-Do item' 
                         placeholder='Enter the item here...'
@@ -69,20 +69,24 @@ class InputContainer extends Component {
                         value={this.state.category}
                         placeholder='Enter the Category here...'
                         changed={(e) => this.inputChanged(e, '2')}/>
+
+                    <div className={classes.side}>
+                        <InputElement 
+                            id='3'
+                            type='select'
+                            value={this.state.urgency}
+                            changed={(e) => this.inputChanged(e, '3')}
+                            list={[{option: 'low', value: 1},
+                                    {option: 'medium', value: 2},
+                                    {option: 'high', value: 3}]}/>
+                                    
+                        <InputElement 
+                            type='button'
+                            label='ADD'
+                        /> 
+                    </div>
                         
-                    <InputElement 
-                        id='3'
-                        type='select'
-                        value={this.state.urgency}
-                        changed={(e) => this.inputChanged(e, '3')}
-                        list={[{option: 'low', value: 1},
-                                 {option: 'medium', value: 2},
-                                  {option: 'high', value: 3}]}/>
-                                  
-                    <InputElement 
-                        type='button'
-                        label='ADD'
-                       /> 
+                    
                 </form>
             </div>
         );

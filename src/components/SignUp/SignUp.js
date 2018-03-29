@@ -75,9 +75,8 @@ getUserData = (e, email, password) => {
                         <Input
                             id='1'
                             type='input'
-                            style={{width:'300px',
-                                    marginLeft:'0',
-                                    marginTop:'2em'}} 
+                            // style={{width:'300px',
+                            //         marginTop:'2em'}} 
                             name='email' 
                             content='Email' 
                             placeholder='Email Address'
@@ -87,8 +86,8 @@ getUserData = (e, email, password) => {
                         <Input
                             id='1'
                             type='input'
-                            style={{width:'300px',
-                                    marginTop:'2em',}} 
+                            // style={{width:'300px',
+                            //         marginTop:'2em',}} 
                             name='password' 
                             content='Password' 
                             placeholder='*******'
@@ -97,13 +96,13 @@ getUserData = (e, email, password) => {
 
                         <div className={classes.btns}>
                             <Input 
-                                style={{marginLeft:'0'}}
+                                // style={{marginLeft:'0'}}
                                 type='button'
                                 label='LogIn'
                                 reset={(e) => this.getUserData(e, this.state.email, this.state.password)}
                             /> 
                             <Input 
-                                style={{marginLeft:'0'}}
+                                style={{marginLeft:'2em'}}
                                 type='button'
                                 label='Register'
                                 reset={(e) => this.writeUserData(e, this.state.email, this.state.password)}
