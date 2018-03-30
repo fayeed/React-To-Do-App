@@ -1,155 +1,154 @@
 .Item {
-    display: flex;
-    height: 6em;
-    width: 100%;
+  display: flex;
+  height: 6em;
+  width: 100%;
 }
 
 .Item__btn {
-    height: 100%;
-    width: 8%;
-    display: flex;
+  height: 100%;
+  width: 8%;
+  display: flex;
 }
 
 .Item__btn img {
-    width: 10%;
-    margin: auto auto;
-    align-self: center;
-    justify-self: center;
-    opacity: 0;
-    transition: all .2s ease-in;
+  width: 10%;
+  margin: auto auto;
+  align-self: center;
+  justify-self: center;
+  opacity: 0;
+  transition: all 0.2s ease-in;
 }
 
 .Item__btn:hover img {
-    opacity: 1;
-    width: 50%;
+  opacity: 1;
+  width: 50%;
 }
 
 .Item__close {
-    background-color: lightsalmon;
-    border-bottom: 3px solid rgb(253, 130, 81);
-    border-right: 3px solid rgb(253, 130, 81);
+  background-color: lightsalmon;
+  border-bottom: 3px solid rgb(253, 130, 81);
+  border-right: 3px solid rgb(253, 130, 81);
 }
 
 .Item__done {
-    background-color: rgb(123, 216, 29);
-    border-bottom: 3px solid rgb(94, 168, 20);
-    border-right: 3px solid rgb(94, 168, 20);
+  background-color: rgb(123, 216, 29);
+  border-bottom: 3px solid rgb(94, 168, 20);
+  border-right: 3px solid rgb(94, 168, 20);
 }
 
 .Item__content {
-    height: 100%;
-    width: 84%;
-    padding: 0 10% 0 5%;
-    background-color: #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 3px solid rgb(180, 180, 180);
-    
+  height: 100%;
+  width: 84%;
+  padding: 0 10% 0 5%;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid rgb(180, 180, 180);
 }
 
 .Item__time {
-    font-size: .8em;
-    letter-spacing: 1px;
-    color: rgb(95, 93, 93);
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  color: rgb(95, 93, 93);
 }
 
 .Item__message {
-    font-size: 1.5em;
-    color: rgb(95, 93, 93);
-    letter-spacing: .5px;
+  font-size: 1.5em;
+  color: rgb(95, 93, 93);
+  letter-spacing: 0.5px;
 }
 
 .Item__category {
-    margin-top: .5em;
-    font-size: .8em;
-    color: rgb(134, 134, 134);
+  margin-top: 0.5em;
+  font-size: 0.8em;
+  color: rgb(134, 134, 134);
 }
 
 @media (min-width: 320px) {
-    .Item {
-        height: 3em;
-    }
+  .Item {
+    height: 3em;
+  }
 
-    .Item__btn {
-        width: 16%;
-    }
-    
-    .Item__time {
-        font-size: .4em;
-    }
-    
-    .Item__message {
-        font-size: .7em;
-    }
-    
-    .Item__category {
-        font-size: .4em;
-    }
+  .Item__btn {
+    width: 16%;
+  }
+
+  .Item__time {
+    font-size: 0.4em;
+  }
+
+  .Item__message {
+    font-size: 0.7em;
+  }
+
+  .Item__category {
+    font-size: 0.4em;
+  }
 }
 
 @media (min-width: 768px) {
-    .Item {
-        height: 4em;
-    }
+  .Item {
+    height: 4em;
+  }
 
-    .Item__btn {
-        width: 8%;
-    }
-    
-    .Item__time {
-        font-size: .6em;
-    }
-    
-    .Item__message {
-        font-size: 1em;
-    }
-    
-    .Item__category {
-        font-size: .6em;
-    }
+  .Item__btn {
+    width: 8%;
+  }
+
+  .Item__time {
+    font-size: 0.6em;
+  }
+
+  .Item__message {
+    font-size: 1em;
+  }
+
+  .Item__category {
+    font-size: 0.6em;
+  }
 }
 
 @media (min-width: 1024px) {
-    .Item {
-        height: 6em;
-    }
+  .Item {
+    height: 6em;
+  }
 
-    .Item__btn {
-        width: 10%;
-    }
-    
-    .Item__time {
-        font-size: .7em;
-    }
-    
-    .Item__message {
-        font-size: 1.2em;
-    }
-    
-    .Item__category {
-        font-size: .7em;
-    }
+  .Item__btn {
+    width: 10%;
+  }
+
+  .Item__time {
+    font-size: 0.7em;
+  }
+
+  .Item__message {
+    font-size: 1.2em;
+  }
+
+  .Item__category {
+    font-size: 0.7em;
+  }
 }
 
 @media (min-width: 1366px) {
-    .Item {
-        height: 6em;
-    }
+  .Item {
+    height: 6em;
+  }
 
-    .Item__btn {
-        width: 8%;
-    }
-    
-    .Item__time {
-        font-size: .8em;
-    }
-    
-    .Item__message {
-        font-size: 1.5em;
-    }
-    
-    .Item__category {
-        font-size: .8em;
-    }
+  .Item__btn {
+    width: 8%;
+  }
+
+  .Item__time {
+    font-size: 0.8em;
+  }
+
+  .Item__message {
+    font-size: 1.5em;
+  }
+
+  .Item__category {
+    font-size: 0.8em;
+  }
 }

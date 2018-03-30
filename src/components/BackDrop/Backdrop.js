@@ -1,12 +1,10 @@
-import React from 'react';
+import React from "react";
 
-import classes from './Backdrop.css';
+import classes from "./Backdrop.css";
 
-const Backdrop = (props) => {
-    return <div 
-            className={classes.Backdrop}
-            onClick={props.click}
-            ></div>
-}
+// displays a fullscreen half opacity screen
+const Backdrop = props => {
+  return <div className={classes.Backdrop} onClick={props.click} />;
+};
 
 export default Backdrop;

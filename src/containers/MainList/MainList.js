@@ -1,29 +1,28 @@
-import React, {Component} from 'react';
-import Item from '../../components/Item/Item';
+import React from "react";
+import Item from "../../components/Item/Item";
 
-import classes from './MainList.css';
+import classes from "./MainList.css";
 
-class MainList extends Component {
+const MainList = props => {
+  // creates a list of JSX items to display
+  // if no items are received then return null
+  const items =
+    props.items !== null
+      ? props.items.map(ele => {
+          return (
+            <Item
+              message={ele.message}
+              category={ele.category}
+              time={ele.time}
+              key={ele.id}
+              id={ele.id}
+              remove={props.remove}
+            />
+          );
+        })
+      : null;
 
-    render() {
-
-
-        const items = this.props.items !== null ? this.props.items.map(ele => {
-            return (<Item message={ele.message} 
-                            category={ele.category} 
-                            time={ele.time} 
-                            key={ele.id}
-                            id={ele.id}
-                            complete={this.props.complete}
-                            canceled={this.props.canceled}/>)
-        }) : null;
-
-        return (
-            <div className={classes.MainList}>
-                {items}
-            </div>
-        );
-    }
-}
+  return <div className={classes.MainList}>{items}</div>;
+};
 
 export default MainList;

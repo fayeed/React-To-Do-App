@@ -1,73 +1,73 @@
 .SideDrawer {
-    z-index: 100;
-    height: 100vh;
-    width: 30%;
-    background-color: dodgerblue;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transform: translateX(90%);
-    transition: all .3s ease-out;
-    border-left: 3px solid rgb(3, 105, 207);
+  z-index: 100;
+  height: 100vh;
+  width: 30%;
+  background-color: dodgerblue;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(90%);
+  transition: all 0.3s ease-out;
+  border-left: 3px solid rgb(3, 105, 207);
 }
 
 .SideDrawer:hover {
-    transform: translateX(85%);
+  transform: translateX(85%);
 }
 
 .SideDrawerActive {
-    z-index: 100;
-    height: 100vh;
-    width: 30%;
-    background-color: dodgerblue;
-    position: fixed;
-    right: 0;
-    top: 0;
-    transform: translateX(0);
-    transition: all .3s ease-out;
-    border-left: 3px solid rgb(3, 105, 207);
+  z-index: 100;
+  height: 100vh;
+  width: 30%;
+  background-color: dodgerblue;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.3s ease-out;
+  border-left: 3px solid rgb(3, 105, 207);
 }
 
 @media (min-width: 320px) {
-    .SideDrawer {
-        width: 80%;
-        transform: translateX(90%);
-    }
+  .SideDrawer {
+    width: 80%;
+    transform: translateX(90%);
+  }
 
-    .SideDrawerActive {
-        width: 80%;
-        transform: translateX(0);
-    }
+  .SideDrawerActive {
+    width: 80%;
+    transform: translateX(0);
+  }
 }
 
 @media (min-width: 768px) {
-    .SideDrawer {
-        width: 60%;
-        transform: translateX(94%);
-    }
+  .SideDrawer {
+    width: 60%;
+    transform: translateX(94%);
+  }
 
-    .SideDrawerActive {
-        width: 60%;
-    }
+  .SideDrawerActive {
+    width: 60%;
+  }
 }
 
 @media (min-width: 1024px) {
-    .SideDrawer {
-        width: 40%;
-    }
+  .SideDrawer {
+    width: 40%;
+  }
 
-    .SideDrawerActive {
-        width: 40%;
-    }
+  .SideDrawerActive {
+    width: 40%;
+  }
 }
 
 @media (min-width: 1366px) {
-    .SideDrawer {
-        width: 30%;
-        transform: translateX(90%);
-    }
+  .SideDrawer {
+    width: 30%;
+    transform: translateX(90%);
+  }
 
-    .SideDrawerActive {
-        width: 30%;
-    }
+  .SideDrawerActive {
+    width: 30%;
+  }
 }

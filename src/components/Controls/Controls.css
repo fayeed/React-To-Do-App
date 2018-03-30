@@ -1,15 +1,15 @@
 .Controls {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .ControlsActive {
-    width: 100%;
-    margin-top: 4em;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  margin-top: 4em;
+  display: flex;
+  flex-direction: column;
 }
