@@ -29,23 +29,8 @@ class App extends Component {
   }
 
   pushList = (ele, type) => {
-    //e.preventDefault()
-    //email = email.replace(/\./i, 'j')
-    let todos = []
-
-    console.log(todos)
-
-    this.database.ref(`/users/${this.state.email}`).once('value').then((todo) => {
-      if(type === 'items') {
-        todos = todo.val().items || []
-        console.log(todos)
-      } else if(type === 'completed'){
-        todos = todo.val().completed || []
-        console.log(todos)
-      } else if(type === 'canceled') {
-        todos = todo.val().canceled || []
-        console.log(todos)
-      }
+    this.database.ref(`/users/${this.state.email}/${type}`).once('value').then((todo) => {
+      let todos = todo.val() || []
 
       const d = new Date();
 
@@ -67,23 +52,15 @@ class App extends Component {
     });
   }
 
-  readList = (type) => {
+  readList = (type, callback) => {
     this.database.ref(`/users/${this.state.email}/${type}`).once('value').then((todo) => {
-      if(type === 'items') {
-        this.setState({items: todo.val() || []})
-      } else if(type === 'completed'){
-        this.setState({completed: todo.val() || []})
-      } else if(type === 'canceled') {
-        this.setState({canceled: todo.val() || []})
-      }
-      //this.setState({items: todo.val() || []})
+      callback(todo.val(), this)
+      
       console.log('read : ', todo.val() || [])
     })
   }
 
   removeItem = (id) => {
-    // remove the item in he list
-    // update the content
       let i = [...this.state.items].filter(ele => ele.id !== id)
       let s = [...this.state.canceled]
       let filtered = [...this.state.items].filter(ele => ele.id === id)[0]
@@ -139,9 +116,9 @@ class App extends Component {
 
   componentDidMount () {
     console.log('component Did mount')
-    this.readList('items');
-    this.readList('completed');
-    this.readList('canceled');
+    this.readList('items', (todo) => this.setState({items: todo}));
+    this.readList('completed', (todo) => this.setState({completed: todo}));
+    this.readList('canceled', (todo) => this.setState({canceled: todo}));
   }
 
 

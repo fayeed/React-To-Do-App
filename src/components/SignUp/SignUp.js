@@ -42,9 +42,9 @@ getUserData = (e, email, password) => {
             this.setState({email: email,
                 password: password})
             this.props.toggleLogged()
-            this.props.startUpdate('items')
-            this.props.startUpdate('completed')
-            this.props.startUpdate('canceled')
+            this.props.startUpdate('items', (todo, app) => app.setState({items: todo}))
+            this.props.startUpdate('completed', (todo, app) => app.setState({completed: todo}))
+            this.props.startUpdate('canceled', (todo, app) => app.setState({canceled: todo}))
             return true;
         }
       }).catch((e) => {
