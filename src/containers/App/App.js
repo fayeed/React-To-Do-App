@@ -139,9 +139,9 @@ class App extends Component {
 
   componentDidMount () {
     console.log('component Did mount')
-    // this.readList('items');
-    // this.readList('completed');
-    // this.readList('canceled');
+    this.readList('items');
+    this.readList('completed');
+    this.readList('canceled');
   }
 
 

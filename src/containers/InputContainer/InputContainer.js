@@ -44,7 +44,6 @@ class InputContainer extends Component {
         const key = this.database.ref(`/users/test@testjcom`).push().key
 
         return (
-
             <div className={classes.InputContainer}>
                 <form onSubmit={(e) => this.props.addItem(e, {message: this.state.message, 
                                                         category: this.state.category,

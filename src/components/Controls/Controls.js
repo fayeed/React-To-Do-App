@@ -14,10 +14,9 @@ const Controls = (props) => {
 
     const loggedOut = {
                     ...newBtn,
-                    position: 'fixed',
                     bottom: '0',
                     left: '0',
-                    marginLeft: '0em'        
+                    margin: '0 auto',      
                 }
 
     return (

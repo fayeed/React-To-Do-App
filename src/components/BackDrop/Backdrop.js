@@ -6,7 +6,7 @@ const Backdrop = (props) => {
     return <div 
             className={classes.Backdrop}
             onClick={props.click}
-            style={{opacity:"1"}}></div>
+            ></div>
 }
 
 export default Backdrop;
