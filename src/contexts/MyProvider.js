@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as database from "../firebase/database";
 import * as firebase from 'firebase';
 
-const { Provider, Consumer } = React.createContext();
+const {Provider, Consumer} = React.createContext();
 
 class MyProvider extends Component {
   state = {
@@ -13,7 +13,7 @@ class MyProvider extends Component {
     email: "",
     password: "",
     isInputOpen: false,
-    isSignUpOpen: false,
+    isSignUpOpen: true,
     isLoggedIn: false
   };
 
@@ -21,7 +21,7 @@ class MyProvider extends Component {
       this.setState({id});
   }
 
-  changeEmail = email => {
+  changeEmail = (email) => {
     this.setState({ email });
   };
 
@@ -155,5 +155,5 @@ class MyProvider extends Component {
   }
 }
 
-export default { MyProvider };
-export { Consumer };
+export default MyProvider;
+export {Consumer};

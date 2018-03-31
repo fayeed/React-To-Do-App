@@ -1,5 +1,4 @@
 import config from "./firebaseconfig";
-import * as firebase from "firebase";
 
 const database = config.database();
 
@@ -128,7 +127,7 @@ const getUserData = (email, password, callback) => {
 
 const writeUserData = (name, email, password, callback) => {
   
-  const key = firebase.ref('/users/').push().key;
+  const key = database.ref('/users/').push().key;
 
   database
     .ref("users/" + key)

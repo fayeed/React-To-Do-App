@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    height: 8vh;
+    padding: .5em 1.5em 0 1.5em;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 .5em 4em rgba(0, 0, 0, 0.07);
+}
+
+.header__title {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: dodgerblue;
+    text-transform: uppercase;
+    margin-top: .3em;
+}
+
+.header__userIcon {
+    width: 1.6em;
+}
