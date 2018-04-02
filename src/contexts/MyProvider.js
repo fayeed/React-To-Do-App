@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import * as database from "../firebase/database";
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
-const {Provider, Consumer} = React.createContext();
+const { Provider, Consumer } = React.createContext();
 
 class MyProvider extends Component {
   state = {
     list: [],
     currentlist: "",
-    id: '',
+    id: "",
     name: "",
     email: "",
     password: "",
@@ -18,10 +18,10 @@ class MyProvider extends Component {
   };
 
   chanheID = id => {
-      this.setState({id});
-  }
+    this.setState({ id });
+  };
 
-  changeEmail = (email) => {
+  changeEmail = email => {
     this.setState({ email });
   };
 
@@ -42,10 +42,16 @@ class MyProvider extends Component {
   };
 
   toggleLoggedIn = () => {
-    if(this.state.isLoggedIn) {
-        this.setState({id: '',email: '', name: '', password: '', isLoggedIn: false})
+    if (this.state.isLoggedIn) {
+      this.setState({
+        id: "",
+        email: "",
+        name: "",
+        password: "",
+        isLoggedIn: false
+      });
     } else {
-        this.setState({isLoggedIn: true})
+      this.setState({ isLoggedIn: true });
     }
   };
 
@@ -55,36 +61,35 @@ class MyProvider extends Component {
     );
   };
 
-  addList = (ele) => {
+  addList = ele => {
     let s = this.state.items ? [...this.state.list] : [];
     const key = firebase.ref(`/users/${this.state.id}/list/`).push().key;
-    ele.id = key
-    s.push(ele)
-    if(this.state.isLoggedIn) {
-        database.default.pushList(this.state.id, ele)
+    ele.id = key;
+    s.push(ele);
+    if (this.state.isLoggedIn) {
+      database.default.pushList(this.state.id, ele);
     }
-    
-    this.setState({list: s})
-  }
 
+    this.setState({ list: s });
+  };
 
   removeList = (id, ele) => {
     let i = [...this.state.list].filter(ele => ele.id !== id);
 
     if (this.state.isLoggedIn) {
-      database.default.removeList( this.state.id, id);
+      database.default.removeList(this.state.id, id);
     }
-    
+
     this.setState({ list: i });
-  }
+  };
 
   addItem = (id, ele, listID) => {
     let s = this.state.items ? [...this.state.list] : [];
     s.forEach((list, index) => {
-        if(list.id === listID) {
-            s[index].items.push(ele) 
-        }
-    }) 
+      if (list.id === listID) {
+        s[index].items.push(ele);
+      }
+    });
     this.setState({ list: s });
 
     if (this.state.isLoggedIn) {
@@ -97,14 +102,13 @@ class MyProvider extends Component {
   removeItem = (id, listID) => {
     let s = this.state.items ? [...this.state.list] : [];
     s.forEach((list, index) => {
-        if(list.id === listID) {
-            s[index].items = s[index].items.filter((ele, i) => ele) 
-        }
-    }) 
+      if (list.id === listID) {
+        s[index].items = s[index].items.filter((ele, i) => ele);
+      }
+    });
 
     if (this.state.isLoggedIn) {
-      database.default.removeFromList( this.state.id, id);
-      
+      database.default.removeFromList(this.state.id, id);
     }
 
     this.setState({ list: s });
@@ -115,7 +119,15 @@ class MyProvider extends Component {
       database.default.getUserData(
         this.state.email,
         this.state.password,
-        (id, name, email, password) => this.setState({ id, name, email, password })
+        (id, name, email, password) =>
+          this.setState({
+            id,
+            name,
+            email,
+            password,
+            isLoggedIn: true,
+            isSignUpOpen: false
+          })
       );
     }
   };
@@ -126,7 +138,15 @@ class MyProvider extends Component {
         this.state.name,
         this.state.email,
         this.state.password,
-        (id, name, email, password) => this.setState({ id, name, email, password })
+        (id, name, email, password) =>
+          this.setState({
+            id,
+            name,
+            email,
+            password,
+            isLoggedIn: true,
+            isSignUpOpen: false
+          })
       );
     }
   };
@@ -146,7 +166,7 @@ class MyProvider extends Component {
           addItem: this.addItem,
           removeItem: this.removeItem,
           addUser: this.addUser,
-          getUser: this.getUser,
+          getUser: this.getUser
         }}
       >
         {this.props.children}
@@ -156,4 +176,4 @@ class MyProvider extends Component {
 }
 
 export default MyProvider;
-export {Consumer};
+export { Consumer };

@@ -1,0 +1,35 @@
+.LogIn {
+  padding-right: 3em;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.LogIn__title {
+  text-transform: uppercase;
+  font-size: 3em;
+  margin-top: 1.5em;
+  align-self: left;
+  margin-left: .7em;
+  color: rgb(105, 105, 105);
+}
+
+.LogIn__inputContainer {
+  width: 80%;
+  margin-top: 6em;
+  align-self: center;
+}
+
+.LogIn__inputContainer div:nth-child(2) {
+  margin-top: 2.5em;
+}
+
+.LogIn__btnContainer {
+  display: flex;
+  width: 80%;
+  margin: 2em auto;
+  align-items: center;
+}

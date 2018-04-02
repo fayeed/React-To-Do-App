@@ -1,0 +1,47 @@
+.Authentication {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  /* text-align: center; */
+}
+
+.Authentication__logoutContainer {
+  height: 100%;
+}
+
+.Authentication__close {
+  cursor: pointer;
+  position: absolute;
+  right: 1em;
+  top: 1em;
+  width: 2em;
+  height: 2em;
+  opacity: 0.3;
+  z-index: 200;
+}
+
+.Authentication__close:hover {
+  opacity: 1;
+}
+
+.Authentication__close:before,
+.Authentication__close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 2px;
+  background-color: #fff;
+}
+
+.Authentication__close:before {
+  transform: rotate(45deg);
+}
+
+.Authentication__close:after {
+  transform: rotate(-45deg);
+}

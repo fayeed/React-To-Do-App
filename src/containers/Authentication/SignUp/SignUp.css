@@ -1,0 +1,89 @@
+.SignUp {
+  position: absolute;
+  background: dodgerblue;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(90%);
+  transition: all 0.2s;
+}
+
+.SignUp:hover {
+  transform: translateX(89.5%);
+}
+
+.SignUpActive {
+  position: absolute;
+  background: dodgerblue;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(0%);
+  transition: all 0.2s;
+}
+
+.SignUp__back {
+  cursor: pointer;
+  display: inline-block !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4em;
+  height: 4em;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0);
+  margin-top: 0em;
+  box-sizing: content-box;
+  transition: all .2s;
+  opacity: .3;
+}
+
+.SignUp__back:before {
+  position: absolute;
+  content: "";
+  margin: auto;
+  width: calc(3em / 3.5);
+  height: calc(3em / 3.5);
+  background: rgba(0, 0, 0, 0);
+  border: calc(1em / 8) solid #fff;
+  border-right: none;
+  border-top: none;
+  top: 0;
+  bottom: 0;
+  left: calc(3em / 8);
+  right: 0;
+  transform: rotate(45deg);
+  box-sizing: content-box;
+}
+
+.SignUp__back:hover {
+  opacity: 1;
+}
+
+.SignUp__title {
+  text-transform: uppercase;
+  font-size: 3em;
+  margin-top: 1.5em;
+  align-self: center;
+  color: white;
+}
+
+.SignUp__inputContainer {
+  width: 80%;
+  margin-top: 6em;
+  align-self: center;
+}
+
+.SignUp__inputContainer div:nth-child(2),
+.SignUp__inputContainer div:nth-child(3){
+  margin-top: 2.5em;
+}
+
+.SignUp__btnContainer {
+  display: flex;
+  width: 80%;
+  margin: 2em auto;
+  align-items: center;
+}

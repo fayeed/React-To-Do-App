@@ -11,12 +11,26 @@ const Input = props => {
         <React.Fragment>
           <input
             type={props.cat}
-            className={classes.InputElement__input}
+            className={[
+              classes.InputElement__input,
+              props.modifier === "gray"
+                ? classes["InputElement__input--gray"]
+                : classes["InputElement__input--white"]
+            ].join(" ")}
             placeholder={props.placeholder}
             onChange={props.onChange}
             value={props.value}
           />
-           <label className={classes.InputElement__label}>{props.label}</label>
+          <label
+            className={[
+              classes.InputElement__label,
+              props.modifier === "gray"
+                ? classes["InputElement__label--gray"]
+                : classes["InputElement__label--white"]
+            ].join(" ")}
+          >
+            {props.label}
+          </label>
         </React.Fragment>
       );
       break;
@@ -28,7 +42,14 @@ const Input = props => {
     case "Button":
       InputElement = (
         <button
-          className={classes.InputElement__button}
+          className={[classes.InputElement__button,
+            props.modifier === "gray"
+              ? classes["InputElement__button--gray"]
+              : classes["InputElement__button--white"]
+          ].join(" ")}
+          placeholder={props.placeholder}
+          onChange={props.onChange}
+          value={props.value}
           onClick={props.onClick}
         >
           {props.label}
