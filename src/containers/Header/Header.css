@@ -17,5 +17,6 @@
 }
 
 .header__userIcon {
+    cursor: pointer;
     width: 1.6em;
 }

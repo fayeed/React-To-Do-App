@@ -1,0 +1,19 @@
+.Section {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 3em;
+}
+
+.Section__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 2em;
+    grid-row-gap: 2em;
+}
+
+.Section__title {
+    margin-bottom: 2em;
+    color: rgb(141, 141, 141);
+    font-size: .9em;
+    margin-left: 1.5em;
+}

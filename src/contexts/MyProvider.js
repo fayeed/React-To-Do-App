@@ -6,14 +6,18 @@ const { Provider, Consumer } = React.createContext();
 
 class MyProvider extends Component {
   state = {
-    list: [],
+    list: [{id:0, name:'list 1', color:'#777', time:'01/12/17', items:Array(10)},
+    {id:1, name:'list 2', color:'#513', time:'01/12/17', items:Array(12)},
+    {id:2, name:'list 3', color:'#561', time:'01/12/17', items:Array(20)},
+    {id:3, name:'list 4', color:'#654', time:'01/12/17', items:Array(8)},
+    {id:4, name:'list 5', color:'#892', time:'01/12/17', items:Array(54)}],
     currentlist: "",
     id: "",
     name: "",
     email: "",
     password: "",
     isInputOpen: false,
-    isSignUpOpen: true,
+    isSignUpOpen: false,
     isLoggedIn: false
   };
 

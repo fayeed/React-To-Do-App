@@ -1,0 +1,49 @@
+.Sidebutton {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: dodgerblue;
+    padding: .8em .8em;
+    border-top-right-radius: 1em;
+}
+
+.Sidebutton:hover .Sidebutton__icon {
+    transform: rotate(180deg)
+}
+
+.Sidebutton__icon {
+  box-sizing: content-box;
+  display: inline-block !important;
+  position: relative;
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: all .4s;
+}
+
+.Sidebutton__icon:before {
+  position: absolute;
+  content: "";
+  margin: auto;
+  width: calc(1.5em / 8);
+  height: calc(2em / 1.5);
+  background-color: #ffffff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.Sidebutton__icon:after {
+  position: absolute;
+  content: "";
+  margin: auto;
+  width: calc(2em / 1.5);
+  height: calc(1.5em / 8);
+  background-color: #ffffff;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

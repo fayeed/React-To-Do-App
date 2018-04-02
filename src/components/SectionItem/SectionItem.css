@@ -1,0 +1,92 @@
+.SectionItem {
+  width: 80%;
+  margin: 0 auto;
+  height: 7em;
+  padding: 1em;
+  border-radius: 1em;
+  box-shadow: 0 0.2em 2em rgba(0, 0, 0, 0.185);
+  position: relative;
+  transition: all .2s;
+}
+
+.SectionItem:hover {
+    transform: translateY(-.2em);
+    box-shadow: 0 0.8em 2em rgba(0, 0, 0, 0.247);
+}
+
+.SectionItem--white {
+  background-color: white;
+}
+
+.SectionItem--gray {
+  background-color: rgb(230, 230, 230);
+  box-shadow: 0 0.2em 2em rgba(0, 0, 0, 0.226);
+}
+
+.SectionItem__indicator {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  width: 1.4em;
+  height: 1.4em;
+  background-color: transparent;
+  border: 3px solid dodgerblue;
+  border-radius: 5px;
+}
+
+
+.SectionItem__add {
+  position: absolute;
+  top: -0.2em;
+  right: -3.5em;
+  box-sizing: content-box;
+  display: inline-block !important;
+  position: relative;
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: all 0.4s;
+}
+
+.SectionItem__add:before {
+  position: absolute;
+  content: "";
+  margin: auto;
+  width: calc(1.5em / 8);
+  height: calc(2em / 1.5);
+  background-color: rgb(58, 58, 58);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.SectionItem__add:after {
+  position: absolute;
+  content: "";
+  margin: auto;
+  width: calc(2em / 1.5);
+  height: calc(1.5em / 8);
+  background-color: rgb(58, 58, 58);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.SectionItem__container {
+  position: absolute;
+  bottom: 15%;
+  left: 15%;
+}
+
+.SectionItem__title {
+  font-size: 1.2em;
+}
+
+.SectionItem__tasks {
+  margin-top: 0.5em;
+  font-size: 0.7em;
+  color: dimgrey;
+}

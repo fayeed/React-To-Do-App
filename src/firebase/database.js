@@ -57,24 +57,21 @@ const readList = (id, callback) => {
 };
 
 const pushList = (id, ele) => {
-  database
-    .ref(`/users/${id}/list/`)
-    .once("value")
-    .then(todo => {
+
+  const key = database.ref(`/users/${id}/list`).push().key;
 
       const d = new Date();
       const list = {
         id: ele.id,
         name: ele.name,
         items: [],
+        color: Math.floor((Math.random() * 4) + 1), 
         time: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
       }
 
-      todo.push(list)
-
-      database.ref(`users/${id}/list/`).set(todo);
+      database.ref(`users/${id}/list/${key}`).set(list);
       console.log("complete");
-    });
+    
 }
 
 const removeList = (id, itemId) => {
