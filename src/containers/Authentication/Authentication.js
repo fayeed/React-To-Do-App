@@ -34,6 +34,7 @@ class Authentication extends Component {
                       changeEmail={context.changeEmail}
                       changePassword={context.changePassword}
                       getUser={context.getUser}
+                      fetchList={context.fetchList}
                     />
                     <SignUp
                       changeName={context.changeName}

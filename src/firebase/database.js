@@ -10,23 +10,23 @@ const pushToList = (id, ele, listID) => {
     .once("value")
     .then(snapshot => {
       snapshot.forEach(childSnapshot => {
-      let todos = childSnapshot.val() || [];
+        let todos = childSnapshot.val() || [];
 
-      const d = new Date();
+        const d = new Date();
 
-      todos.items.push({
-        id: ele.id,
-        message: ele.message,
-        category: ele.category,
-        completed: false,
-        time: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
+        todos.items.push({
+          id: ele.id,
+          message: ele.message,
+          category: ele.category,
+          completed: false,
+          time: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
+        });
+
+        database.ref(`users/${id}/list/`).orderByChild('id')
+          .equalTo(listID).set(todos);
+        console.log("complete");
       });
-
-      database.ref(`users/${id}/list/`).orderByChild('id')
-      .equalTo(listID).set(todos);
-      console.log("complete");
     });
-  });
 };
 
 const removeFromList = (id, itemId) => {
@@ -48,49 +48,46 @@ const removeFromList = (id, itemId) => {
 };
 
 const readList = (id, callback) => {
+
   database
-    .ref(`/users/${id}/list/`)
+    .ref(`/list/`)
+    .orderByChild("useID")
+    .equalTo(id)
     .once("value")
     .then(todo => {
-      callback(todo.val());
+      todo.forEach(t => {
+        console.log(t)
+      })
+
+      //callback(todo.val());
     });
 };
 
 const pushList = (id, ele) => {
 
-  const key = database.ref(`/users/${id}/list`).push().key;
-
-      const d = new Date();
-      const list = {
-        id: ele.id,
-        name: ele.name,
-        items: [],
-        color: Math.floor((Math.random() * 4) + 1), 
-        time: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
-      }
-
-      database.ref(`users/${id}/list/${key}`).set(list);
-      console.log("complete");
-    
-}
-
-const removeList = (id, itemId) => {
   database
-    .ref(`/users/${id}/list/`)
-    .orderByChild("id")
-    .equalTo(itemId)
+    .ref(`/users/${id}/`)
     .once("value")
     .then(snapshot => {
-      snapshot.forEach(childSnapshot => {
-        database
-          .ref(`/users/${id}/list/`)
-          .child(childSnapshot.key)
-          .remove();
-      });
+      let todos = snapshot.val() || null;
+      todos.items = todos.items || []
+
+      todos.items.push(ele);
+
+      database.ref(`users/${id}/`).set(todos);
+      console.log("complete");
     });
+
+}
+
+const removeList = (id, ele) => {
+  database
+    .ref(`/users/${id}/`)
+    .set(ele);
 };
 
 const getUserData = (email, password, callback) => {
+
   database
     .ref("/users/")
     .orderByChild("email")
@@ -98,6 +95,7 @@ const getUserData = (email, password, callback) => {
     .once("value")
     .then(snapshot => {
       snapshot.forEach(childSnapshot => {
+        console.log(childSnapshot.val())
         if (childSnapshot.val() === null) {
           return false;
         } else if (
@@ -110,7 +108,8 @@ const getUserData = (email, password, callback) => {
             childSnapshot.val().id,
             childSnapshot.val().name,
             childSnapshot.val().email,
-            childSnapshot.val().password
+            childSnapshot.val().password,
+            childSnapshot.val().items
           );
 
           return true;
@@ -122,8 +121,8 @@ const getUserData = (email, password, callback) => {
     });
 };
 
-const writeUserData = (name, email, password, callback) => {
-  
+const writeUserData = (name, email, password, list, callback) => {
+
   const key = database.ref('/users/').push().key;
 
   database
@@ -132,9 +131,18 @@ const writeUserData = (name, email, password, callback) => {
       id: key,
       email,
       password,
-      name
+      name,
+      list
     })
     .then(callback(key, name, email, password));
 };
 
-export default { pushToList, removeFromList, readList, pushList, removeList, getUserData, writeUserData };
+export default {
+  pushToList,
+  removeFromList,
+  readList,
+  pushList,
+  removeList,
+  getUserData,
+  writeUserData
+};

@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Authentication from "../Authentication/Authentication";
 import Sidebutton from '../../components/SideButton/Sidebutton';
 import Section from '../Section/Section';
+import AddSection from '../AddSection/AddSection';
 import MyProvider from "../../contexts/MyProvider";
 
 import "./App.css";
@@ -19,6 +20,7 @@ class App extends Component {
           <main >
             <Sidebutton />
             <Section />
+            <AddSection />
             </main>
         </MyProvider>
       </React.Fragment>

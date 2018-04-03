@@ -9,7 +9,10 @@ const SectionItem = props => {
     case "indicator":
       item = (
         <React.Fragment>
-          <div className={classes.SectionItem__indicator} />
+          <div
+            onClick={props.remove}
+            className={classes.SectionItem__indicator}
+          />
           <div className={classes.SectionItem__container}>
             <p className={classes.SectionItem__title}>{props.name}</p>
             <p className={classes.SectionItem__tasks}>{props.length} tasks</p>
@@ -33,6 +36,8 @@ const SectionItem = props => {
 
   return (
     <div
+      onClick={props.click}
+      key={props.id}
       className={
         props.type === "add"
           ? [classes.SectionItem, classes["SectionItem--gray"]].join(" ")
