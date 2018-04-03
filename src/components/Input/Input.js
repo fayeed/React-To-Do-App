@@ -36,13 +36,30 @@ const Input = props => {
       break;
 
     case "Select":
-      InputElement = null;
+      let item = props.list.map(ele => (
+        <option key={ele.id} value={ele.id}>
+          {ele.name}
+        </option>
+      ));
+
+      InputElement = (
+        <React.Fragment>
+          <select
+            defaultValue={props.list[0].id}
+            ref={ref => props.notref(ref)}
+            className={classes.InputElement__select}
+          >
+            {item}
+          </select>
+        </React.Fragment>
+      );
       break;
 
     case "Button":
       InputElement = (
         <button
-          className={[classes.InputElement__button,
+          className={[
+            classes.InputElement__button,
             props.modifier === "gray"
               ? classes["InputElement__button--gray"]
               : classes["InputElement__button--white"]

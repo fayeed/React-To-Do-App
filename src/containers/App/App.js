@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Header from "../Header/Header";
 import Authentication from "../Authentication/Authentication";
-import Sidebutton from '../../components/SideButton/Sidebutton';
-import Section from '../Section/Section';
-import AddSection from '../AddSection/AddSection';
+import Sidebutton from "../../components/SideButton/Sidebutton";
+import Section from "../Section/Section";
+import AddSection from "../AddSection/AddSection";
+import AddInput from "../AddInput/AddInput";
 import MyProvider from "../../contexts/MyProvider";
 
 import "./App.css";
@@ -17,11 +18,12 @@ class App extends Component {
 
           <Header />
 
-          <main >
+          <main>
             <Sidebutton />
             <Section />
             <AddSection />
-            </main>
+            <AddInput />
+          </main>
         </MyProvider>
       </React.Fragment>
     );

@@ -1,29 +1,37 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
 import * as database from "../firebase/database";
 import config from "../firebase/firebaseconfig";
 
 const firebase = config.database();
 
-const {
-  Provider,
-  Consumer
-} = React.createContext();
+const { Provider, Consumer } = React.createContext();
 
 class MyProvider extends Component {
   state = {
-    list: [],
+    list: [
+      {
+        id: "0",
+        name: "Default",
+        color: 1,
+        items: [],
+        date: this.getDate()
+      }
+    ],
     currentList: "",
     id: "",
     name: "",
     email: "",
     password: "",
-    isInputOpen: false,
+    isInputOpen: true,
     isSignUpOpen: false,
     isAddListOpen: false,
     isLoggedIn: false
   };
+
+  getDate() {
+    const d = new Date();
+    return `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
+  }
 
   changeID = id => {
     this.setState({
@@ -97,8 +105,6 @@ class MyProvider extends Component {
           List: todo
         });
       }
-
-      // console.log(todo)
     );
   };
 
@@ -144,7 +150,7 @@ class MyProvider extends Component {
   };
 
   addItem = (id, ele, listID) => {
-    let s = this.state.items ? [...this.state.list] : [];
+    let s = this.state.list ? [...this.state.list] : [];
     s.forEach((list, index) => {
       if (list.id === listID) {
         s[index].items.push(ele);
@@ -204,13 +210,15 @@ class MyProvider extends Component {
   addUser = () => {
     if (!this.state.isLoggedIn && this.state.isSignUpOpen) {
       const d = new Date();
-      const list = [{
-        id: "0",
-        name: "Default",
-        color: 1,
-        items: [],
-        date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
-      }]
+      const list = [
+        {
+          id: "0",
+          name: "Default",
+          color: 1,
+          items: [],
+          date: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
+        }
+      ];
 
       database.default.writeUserData(
         this.state.name,
@@ -233,8 +241,9 @@ class MyProvider extends Component {
   };
 
   render() {
-    return ( <Provider value = {
-        {
+    return (
+      <Provider
+        value={{
           ...this.state,
           chnageID: this.chnageID,
           changeEmail: this.changeEmail,
@@ -252,16 +261,13 @@ class MyProvider extends Component {
           removeItem: this.removeItem,
           addUser: this.addUser,
           getUser: this.getUser
-        }
-      } >
-      {
-        this.props.children
-      } </Provider>
+        }}
+      >
+        {this.props.children}{" "}
+      </Provider>
     );
   }
 }
 
 export default MyProvider;
-export {
-  Consumer
-};
+export { Consumer };

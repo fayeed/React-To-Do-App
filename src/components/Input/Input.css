@@ -132,3 +132,18 @@
 .InputElement__logout:focus {
   outline: none;
 }
+
+.InputElement__select {
+  width: 100%;
+  align-self: center;
+  padding: .5em 1em;
+  font-size: 1.2em;
+  border: none;
+  border-bottom: 2px solid dodgerblue;
+  color: rgb(68, 68, 68);
+}
+
+.InputElement__select > option {
+  background-color: springgreen;
+  padding: .5em 1em;
+}
