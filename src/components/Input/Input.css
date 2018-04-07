@@ -11,14 +11,14 @@
 }
 
 .InputElement__label--gray {
-    color: rgb(68, 68, 68);
+  color: rgb(68, 68, 68);
 }
 
 .InputElement__label--white {
-    color: white;
+  color: white;
 }
 
-.InputElement__input {  
+.InputElement__input {
   width: 100%;
   font-family: "Dosis", sans-serif;
   font-size: 1.3em;
@@ -29,17 +29,17 @@
 }
 
 .InputElement__input--gray {
-    color: rgb(68, 68, 68);
+  color: rgb(68, 68, 68);
 }
 
 .InputElement__input--white {
-    color: white;
-    background-color: dodgerblue;
-    border-bottom: 2px solid rgb(26, 118, 209);
+  color: white;
+  background-color: dodgerblue;
+  border-bottom: 2px solid rgb(26, 118, 209);
 }
 
 .InputElement__input--white::-webkit-input-placeholder {
-    color: white;
+  color: white;
 }
 
 .InputElement__input:focus {
@@ -48,11 +48,11 @@
 }
 
 .InputElement__input--gray:focus {
-    border-bottom: 3px solid dodgerblue;
+  border-bottom: 3px solid dodgerblue;
 }
 
 .InputElement__input--white:focus {
-    border-bottom: 3px solid rgb(26, 118, 209);
+  border-bottom: 3px solid rgb(26, 118, 209);
 }
 
 .InputElement__input:placeholder-shown ~ .InputElement__label {
@@ -77,12 +77,12 @@
 }
 
 .InputElement__button--gray {
-    color: rgb(68, 68, 68);
+  color: rgb(68, 68, 68);
 }
 
 .InputElement__button--white {
-    color: white;
-    background-color: dodgerblue;
+  color: white;
+  background-color: dodgerblue;
 }
 
 .InputElement__button:hover {
@@ -90,15 +90,15 @@
 }
 
 .InputElement__button--gray:hover {
-    background-color: dodgerblue;
-    color: white;
-    border-bottom: 4px solid rgb(23, 115, 207);
+  background-color: dodgerblue;
+  color: white;
+  border-bottom: 4px solid rgb(23, 115, 207);
 }
 
 .InputElement__button--white:hover {
-    background-color: white;
-    color: dodgerblue;
-    border-bottom: 4px solid rgb(26, 118, 209);
+  background-color: white;
+  color: dodgerblue;
+  border-bottom: 4px solid rgb(26, 118, 209);
 }
 
 .InputElement__logoutContainer {
@@ -142,7 +142,7 @@
 .InputElement__select {
   width: 100%;
   align-self: center;
-  padding: .5em 0em;
+  padding: 0.5em 0em;
   font-size: 1.4em;
   border: none;
   border-bottom: 2px solid dodgerblue;
@@ -150,7 +150,7 @@
 }
 
 .InputElement__select::after {
-  content: '\25BC';
+  content: "\25BC";
   position: absolute;
   top: 0;
   right: 0;
@@ -162,5 +162,5 @@
 
 .InputElement__select > option {
   background-color: springgreen;
-  padding: .5em 1em;
+  padding: 0.5em 1em;
 }

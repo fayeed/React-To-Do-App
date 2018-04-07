@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import Input from "../../components/Input/Input";
 import { Consumer } from "../../contexts/MyProvider";
 import LogIn from "./LogIn/LogIn";
@@ -7,16 +7,17 @@ import SignUp from "./SignUp/SignUp";
 import classes from "./Authentication.css";
 
 class Authentication extends Component {
-
+  // state object 
   state = {
     active: false
-  }
+  };
 
+  // toggel the active
   toggleActive = () => {
-    this.setState({active: !this.state.active})
-  }
+    this.setState({ active: !this.state.active });
+  };
 
-  render () {
+  render() {
     return (
       <Consumer>
         {context => (
@@ -61,6 +62,6 @@ class Authentication extends Component {
       </Consumer>
     );
   }
-};
+}
 
 export default Authentication;

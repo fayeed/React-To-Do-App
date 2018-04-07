@@ -13,7 +13,7 @@ const Header = () => {
             className={classes.header__userIcon}
             src={userIcon}
             alt="user icon"
-            onClick={context.toggleSignUp}          
+            onClick={context.toggleSignUp}
           />
         </header>
       )}

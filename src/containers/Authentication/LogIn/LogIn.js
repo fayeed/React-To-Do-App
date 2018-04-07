@@ -32,7 +32,6 @@ const LogIn = props => {
         modifier={modifier}
         onClick={() => {
           props.getUser();
-          // props.fetchList();
         }}
         label="Log in"
       />

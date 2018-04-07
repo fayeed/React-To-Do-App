@@ -36,8 +36,8 @@
   background: rgba(0, 0, 0, 0);
   margin-top: 0em;
   box-sizing: content-box;
-  transition: all .2s;
-  opacity: .3;
+  transition: all 0.2s;
+  opacity: 0.3;
 }
 
 .SignUp__back:before {
@@ -77,7 +77,7 @@
 }
 
 .SignUp__inputContainer div:nth-child(2),
-.SignUp__inputContainer div:nth-child(3){
+.SignUp__inputContainer div:nth-child(3) {
   margin-top: 2.5em;
 }
 

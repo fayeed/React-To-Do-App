@@ -9,10 +9,13 @@ const SignUp = props => {
       className={!props.active ? classes.SignUp : classes.SignUpActive}
       onClick={!props.active ? props.toggleActive : null}
     >
-    <i className={props.active ? classes.SignUp__back : null} onClick={props.toggleActive} />
+      <i
+        className={props.active ? classes.SignUp__back : null}
+        onClick={props.toggleActive}
+      />
       <h2 className={classes.SignUp__title}>Sign UP</h2>
       <div className={classes.SignUp__inputContainer}>
-      <Input
+        <Input
           type="Input"
           onChange={e => props.changeName(e.target.value)}
           modifier="InputElement__input--white"

@@ -1,6 +1,6 @@
 @media (min-width: 1024px) {
-    .App__grid {
-        display: grid;
-        grid-template-columns: 70% 30%;
-    }
+  .App__grid {
+    display: grid;
+    grid-template-columns: 70% 30%;
+  }
 }

@@ -1,14 +1,18 @@
 import * as firebase from "firebase";
 
+// config file for firebase holds all the token and addresses
+// Update the file before running the application
 const config = {
-  apiKey: "AIzaSyDu2A0YMVZxHbLVXpWObsZ26VBS977zF1U",
-  authDomain: "react-to-do-list-app-b6425.firebaseapp.com",
-  databaseURL: "https://react-to-do-list-app-b6425.firebaseio.com",
-  projectId: "react-to-do-list-app-b6425",
-  storageBucket: "",
-  messagingSenderId: "581199972557"
+  apiKey: "<API_KEY>",
+  authDomain: "<PROJECT_ID>.firebaseapp.com",
+  databaseURL: "https://<DATABASE_NAME>.firebaseio.com",
+  projectId: "<PROJECT_ID>",
+  storageBucket: "<BUCKET>.appspot.com",
+  messagingSenderId: "<SENDER_ID>"
 };
 
+// intialize the firebase App
 firebase.initializeApp(config);
 
+// export the firebase app for use
 export default firebase;

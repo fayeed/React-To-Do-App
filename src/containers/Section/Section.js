@@ -11,7 +11,9 @@ const Section = () => {
     <Consumer>
       {context => (
         <div className={classes.Section}>
-          <h3 className={classes.Section__title}>Lists{console.log(context)}</h3>
+          <h3 className={classes.Section__title}>
+            Lists{console.log(context)}
+          </h3>
           <div className={classes.Section__container}>
             {
               (items = context.list.map(ele => {

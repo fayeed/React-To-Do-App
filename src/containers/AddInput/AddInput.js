@@ -6,13 +6,16 @@ import Input from "../../components/Input/Input";
 import classes from "./AddInput.css";
 
 const AddInput = () => {
+  // refence to the HeroInput
   let inputRef = React.createRef();
-//   let selectRef = React.createRef();
-  let select = null
 
-  let changeSelect = (e) => {
-      select = e
-  }
+  // refrence to the select input
+  let select = null;
+
+  // chnage sthe select input to checked unchecked
+  let changeSelect = e => {
+    select = e;
+  };
 
   return (
     <Consumer>

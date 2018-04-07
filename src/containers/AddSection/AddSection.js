@@ -6,6 +6,7 @@ import HeroInput from "../../components/HeroInput/HeroInput";
 import classes from "./AddSection.css";
 
 const AddSection = props => {
+  // create the input reference to the HeroInput
   let inputRef = React.createRef();
 
   return (
