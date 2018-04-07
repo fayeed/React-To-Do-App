@@ -25,7 +25,7 @@ class MyProvider extends Component {
     isInputOpen: false,
     isSignUpOpen: false,
     isAddListOpen: false,
-    isLoggedIn: true
+    isLoggedIn: false
   };
 
   getDate() {
@@ -58,12 +58,12 @@ class MyProvider extends Component {
   };
 
   changeCurrentList = id => {
-    let no = 0; 
+    let no = 0;
     this.state.list.forEach((ele, index) => {
-      if(ele.id === id){
-        no = index
+      if (ele.id === id) {
+        no = index;
       }
-    })
+    });
 
     this.setState({
       currentList: id
@@ -105,14 +105,11 @@ class MyProvider extends Component {
   };
 
   fetchlist = () => {
-    database.default.readList(
-      this.state.id,
-      todo => {
-        this.setState({
-          list: todo
-        });
-      }
-    );
+    database.default.readList(this.state.id, todo => {
+      this.setState({
+        list: todo
+      });
+    });
   };
 
   addList = name => {
@@ -157,18 +154,18 @@ class MyProvider extends Component {
   };
 
   addItem = (message, category) => {
-    const key = firebase.ref('/users/').push().key;
+    const key = firebase.ref("/users/").push().key;
     const ele = {
       id: key,
       message: message,
       category: category,
       completed: false,
       time: this.getDate()
-    }
+    };
     let s = this.state.list ? [...this.state.list] : [];
     s.forEach((list, index) => {
       if (list.id === category) {
-        s[index].items = s[index].items || []
+        s[index].items = s[index].items || [];
         s[index].items.push(ele);
       }
     });
@@ -185,7 +182,7 @@ class MyProvider extends Component {
     });
   };
 
-  removeItem = (id) => {
+  removeItem = id => {
     let s = this.state.list ? [...this.state.list] : [];
     s.forEach((list, index) => {
       if (list.id === this.state.list[this.state.currentList].id) {
@@ -202,14 +199,14 @@ class MyProvider extends Component {
     });
   };
 
-  checkItem = (id) => {
+  checkItem = id => {
     let s = this.state.list ? [...this.state.list] : [];
 
     s.forEach((list, index) => {
       if (list.id === this.state.list[this.state.currentList].id) {
         s[index].items.forEach((ele, i) => {
-          if(ele.id === id) {
-            ele.completed = !ele.completed
+          if (ele.id === id) {
+            ele.completed = !ele.completed;
           }
         });
       }
@@ -222,7 +219,7 @@ class MyProvider extends Component {
     this.setState({
       list: s
     });
-  }
+  };
 
   getUser = () => {
     if (!this.state.isLoggedIn && this.state.isSignUpOpen) {
@@ -279,7 +276,7 @@ class MyProvider extends Component {
   };
 
   componentDidMount() {
-    this.fetchlist()
+    this.fetchlist();
   }
 
   render() {

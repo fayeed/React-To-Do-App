@@ -8,7 +8,7 @@ import AddInput from "../AddInput/AddInput";
 import MainList from '../MainList/MainList';
 import MyProvider from "../../contexts/MyProvider";
 
-import "./App.css";
+import classes from "./App.css";
 
 class App extends Component {
   render() {
@@ -21,7 +21,7 @@ class App extends Component {
 
           <main>
             <Sidebutton />
-            <div>
+            <div className={classes.App__grid}>
             <MainList />
             <Section />
             </div>

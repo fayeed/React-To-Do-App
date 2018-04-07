@@ -76,12 +76,14 @@ const Input = props => {
 
     case "Logout":
       InputElement = (
+        <div className={classes.InputElement__logoutContainer}>
         <button
           className={classes.InputElement__logout}
           onClick={props.onClick}
         >
           {props.label}
         </button>
+        </div>
       );
       break;
     default:

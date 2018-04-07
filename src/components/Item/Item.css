@@ -5,7 +5,7 @@
       justify-content: space-between; */
     display: grid;
     padding: 1em 0em;
-    grid-template-columns: 20% 70% 10%;
+    grid-template-columns: 20% 60% 20%;
   }
   
   .Item:hover {
@@ -23,10 +23,17 @@
     justify-self: center;
     position: relative;
     cursor: pointer;
-    width: 1.5em;
-    height: 1.5em;
+    width: 1em;
+    height: 1em;
     opacity: 0.3;
     z-index: 0;
+  }
+
+  .Item__time {
+    text-align: left;
+    justify-self: left;
+    font-size: .7em;
+    margin: 0;
   }
   
   .Item__close:hover {
@@ -38,7 +45,7 @@
     position: absolute;
     left: 15px;
     content: " ";
-    height: 33px;
+    height: 1.5em;
     width: 2px;
     background-color: rgb(105, 105, 105);
   }
@@ -60,18 +67,11 @@
     justify-self: center;
   }
   .Item__checkbox:before {
-    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
-    -moz-transition: -moz-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
-    transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
-    -webkit-transform: rotate(-45deg) scale(0, 0);
-    -moz-transform: rotate(-45deg) scale(0, 0);
-    -ms-transform: rotate(-45deg) scale(0, 0);
-    -o-transform: rotate(-45deg) scale(0, 0);
     transform: rotate(-45deg) scale(0, 0);
     content: "";
     position: absolute;
-    left: 0.5rem;
-    top: 0.5rem;
+    left: 0.35rem;
+    top: 0.35rem;
     z-index: 1;
     width: 0.75rem;
     height: 0.375rem;
@@ -80,10 +80,6 @@
     border-right-style: none;
   }
   .Item__checkbox:checked:before {
-    -webkit-transform: rotate(-45deg) scale(1, 1);
-    -moz-transform: rotate(-45deg) scale(1, 1);
-    -ms-transform: rotate(-45deg) scale(1, 1);
-    -o-transform: rotate(-45deg) scale(1, 1);
     transform: rotate(-45deg) scale(1, 1);
   }
   .Item__checkbox:after {
@@ -99,3 +95,24 @@
     cursor: pointer;
   }
   
+
+  @media (min-width: 1024px){
+    .Item__message {
+      font-size: 2em;
+    }
+    .Item__time {
+      font-size: 1em;
+    }
+    
+    .Item__checkbox:before {
+      left: 0.5rem;
+      top: 0.35rem;
+      width: 1rem;
+      height: .6rem;
+    }
+
+    .Item__checkbox:after {
+      width: 2rem;
+      height: 2rem;
+    }
+  }

@@ -95,3 +95,22 @@
   font-size: 0.7em;
   color: dimgrey;
 }
+
+
+@media (min-width: 768px){
+  .SectionItem {
+    height: 10em;
+  }
+}
+
+@media (min-width: 1024px){
+  .SectionItem {
+    height: 8em;
+  }
+}
+
+@media (min-width: 1440px){
+  .SectionItem {
+    height: 10em;
+  }
+}

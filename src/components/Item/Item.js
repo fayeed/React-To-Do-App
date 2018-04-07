@@ -20,7 +20,7 @@ const Item = props => {
       />
       <div className={classes.Item__container}>
         <p className={classes.Item__message}>{props.message}</p>
-        <p>{props.time}</p>
+        <p className={classes.Item__time}>{props.time}</p>
       </div>
 
       <span

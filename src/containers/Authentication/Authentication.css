@@ -35,7 +35,7 @@
   content: " ";
   height: 33px;
   width: 2px;
-  background-color: #fff;
+  background-color: rgb(175, 175, 175);
 }
 
 .Authentication__close:before {

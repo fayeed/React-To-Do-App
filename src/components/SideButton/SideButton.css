@@ -5,6 +5,7 @@
     background-color: dodgerblue;
     padding: .8em .8em;
     border-top-right-radius: 1em;
+    z-index: 1000;
 }
 
 .Sidebutton:hover .Sidebutton__icon {
