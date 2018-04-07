@@ -5,6 +5,7 @@ import Sidebutton from "../../components/SideButton/Sidebutton";
 import Section from "../Section/Section";
 import AddSection from "../AddSection/AddSection";
 import AddInput from "../AddInput/AddInput";
+import MainList from '../MainList/MainList';
 import MyProvider from "../../contexts/MyProvider";
 
 import "./App.css";
@@ -20,7 +21,10 @@ class App extends Component {
 
           <main>
             <Sidebutton />
+            <div>
+            <MainList />
             <Section />
+            </div>
             <AddSection />
             <AddInput />
           </main>

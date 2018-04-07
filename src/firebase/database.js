@@ -2,64 +2,52 @@ import config from "./firebaseconfig";
 
 const database = config.database();
 
-const pushToList = (id, ele, listID) => {
+const pushToList = (id, ele) => {
   database
-    .ref(`/users/${id}/list/`)
-    .orderByChild('id')
-    .equalTo(listID)
+    .ref(`/users/${id}/`)
     .once("value")
     .then(snapshot => {
-      snapshot.forEach(childSnapshot => {
-        let todos = childSnapshot.val() || [];
+        let todos = snapshot.val() || [];
 
-        const d = new Date();
+        todos.list  = ele
 
-        todos.items.push({
-          id: ele.id,
-          message: ele.message,
-          category: ele.category,
-          completed: false,
-          time: `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`
-        });
-
-        database.ref(`users/${id}/list/`).orderByChild('id')
-          .equalTo(listID).set(todos);
+        database.ref(`users/${id}/`).set(todos);
         console.log("complete");
-      });
     });
 };
 
-const removeFromList = (id, itemId) => {
+const removeFromList = (id, ele) => {
   database
-    .ref(`/users/${id}/list/`)
-    .orderByChild("id")
-    .equalTo(itemId)
+    .ref(`/users/${id}/`)
     .once("value")
     .then(snapshot => {
-      snapshot.forEach(childSnapshot => {
+      let todos = snapshot.val() || [];
+      todos.list = ele
         database
-          .ref(`/users/${id}/list/`)
-          .orderByChild("id")
-          .equalTo(itemId)
-          .child(childSnapshot.key)
-          .remove();
-      });
+          .ref(`/users/${id}/`).set(todos)
+    });
+};
+
+const updateItem = (id, ele) => {
+  database
+    .ref(`/users/${id}/`)
+    .once("value")
+    .then(snapshot => {
+      let todos = snapshot.val() || [];
+      todos.list = ele
+        database
+          .ref(`/users/${id}/`).set(todos)
     });
 };
 
 const readList = (id, callback) => {
 
   database
-    .ref(`/list/`)
-    .orderByChild("useID")
-    .equalTo(id)
+    .ref(`/users/${id}/`)
     .once("value")
     .then(todo => {
-      todo.forEach(t => {
-        console.log(t)
-      })
-
-      //callback(todo.val());
+      console.log('error',todo.val())
+      callback(todo.val().list);
     });
 };
 
@@ -109,7 +97,7 @@ const getUserData = (email, password, callback) => {
             childSnapshot.val().name,
             childSnapshot.val().email,
             childSnapshot.val().password,
-            childSnapshot.val().items
+            childSnapshot.val().list
           );
 
           return true;
@@ -132,7 +120,7 @@ const writeUserData = (name, email, password, list, callback) => {
       email,
       password,
       name,
-      list
+      items: list
     })
     .then(callback(key, name, email, password));
 };
@@ -144,5 +132,6 @@ export default {
   pushList,
   removeList,
   getUserData,
-  writeUserData
+  writeUserData,
+  updateItem
 };

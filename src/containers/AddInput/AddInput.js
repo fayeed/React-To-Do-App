@@ -47,7 +47,7 @@ const AddInput = () => {
                     console.log(inputRef.current.value, select.value);
                     const name = inputRef.current.value;
                     inputRef.current.value = "";
-                    context.add(name);
+                    context.addItem(name, select.value);
                     context.toggleInput();
                   }}
                 />

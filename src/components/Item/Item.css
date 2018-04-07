@@ -1,0 +1,101 @@
+.Item {
+    width: 100%;
+    margin: 0 auto;
+    /* display: flex;
+      justify-content: space-between; */
+    display: grid;
+    padding: 1em 0em;
+    grid-template-columns: 20% 70% 10%;
+  }
+  
+  .Item:hover {
+    background-color: rgb(231, 231, 231);
+  }
+  
+  .Item__message {
+    text-align: left;
+    justify-self: left;
+    font-size: 20px;
+    margin: 0;
+  }
+  
+  .Item__close {
+    justify-self: center;
+    position: relative;
+    cursor: pointer;
+    width: 1.5em;
+    height: 1.5em;
+    opacity: 0.3;
+    z-index: 0;
+  }
+  
+  .Item__close:hover {
+    opacity: 1;
+  }
+  
+  .Item__close:before,
+  .Item__close:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 2px;
+    background-color: rgb(105, 105, 105);
+  }
+  
+  .Item__close:before {
+    transform: rotate(45deg);
+  }
+  
+  .Item__close:after {
+    transform: rotate(-45deg);
+  }
+  
+  .Item__checkbox {
+    position: relative;
+    top: -0.375rem;
+    margin: 0 1rem 0 0;
+    cursor: pointer;
+    margin-top: 1em;
+    justify-self: center;
+  }
+  .Item__checkbox:before {
+    -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+    -moz-transition: -moz-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+    transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+    -webkit-transform: rotate(-45deg) scale(0, 0);
+    -moz-transform: rotate(-45deg) scale(0, 0);
+    -ms-transform: rotate(-45deg) scale(0, 0);
+    -o-transform: rotate(-45deg) scale(0, 0);
+    transform: rotate(-45deg) scale(0, 0);
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+    top: 0.5rem;
+    z-index: 1;
+    width: 0.75rem;
+    height: 0.375rem;
+    border: 2px solid #16a085;
+    border-top-style: none;
+    border-right-style: none;
+  }
+  .Item__checkbox:checked:before {
+    -webkit-transform: rotate(-45deg) scale(1, 1);
+    -moz-transform: rotate(-45deg) scale(1, 1);
+    -ms-transform: rotate(-45deg) scale(1, 1);
+    -o-transform: rotate(-45deg) scale(1, 1);
+    transform: rotate(-45deg) scale(1, 1);
+  }
+  .Item__checkbox:after {
+    content: "";
+    position: absolute;
+    top: -0.125rem;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    background: #fff;
+    border: 2px solid #b4b4b4;
+    padding: 5px;
+    cursor: pointer;
+  }
+  

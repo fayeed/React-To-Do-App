@@ -17,15 +17,15 @@ class MyProvider extends Component {
         date: this.getDate()
       }
     ],
-    currentList: "",
-    id: "",
-    name: "",
-    email: "",
-    password: "",
-    isInputOpen: true,
+    currentList: 0,
+    id: "-L9TOcYFyq7FemF4HQOa",
+    name: "fayeed",
+    email: "fayeed@live.com",
+    password: "draculla52",
+    isInputOpen: false,
     isSignUpOpen: false,
     isAddListOpen: false,
-    isLoggedIn: false
+    isLoggedIn: true
   };
 
   getDate() {
@@ -58,6 +58,13 @@ class MyProvider extends Component {
   };
 
   changeCurrentList = id => {
+    let no = 0; 
+    this.state.list.forEach((ele, index) => {
+      if(ele.id === id){
+        no = index
+      }
+    })
+
     this.setState({
       currentList: id
     });
@@ -102,7 +109,7 @@ class MyProvider extends Component {
       this.state.id,
       todo => {
         this.setState({
-          List: todo
+          list: todo
         });
       }
     );
@@ -149,10 +156,19 @@ class MyProvider extends Component {
     });
   };
 
-  addItem = (id, ele, listID) => {
+  addItem = (message, category) => {
+    const key = firebase.ref('/users/').push().key;
+    const ele = {
+      id: key,
+      message: message,
+      category: category,
+      completed: false,
+      time: this.getDate()
+    }
     let s = this.state.list ? [...this.state.list] : [];
     s.forEach((list, index) => {
-      if (list.id === listID) {
+      if (list.id === category) {
+        s[index].items = s[index].items || []
         s[index].items.push(ele);
       }
     });
@@ -161,7 +177,7 @@ class MyProvider extends Component {
     });
 
     if (this.state.isLoggedIn) {
-      database.default.pushToList(this.state.email, ele, id);
+      database.default.pushToList(this.state.id, s);
     }
 
     this.setState({
@@ -169,22 +185,44 @@ class MyProvider extends Component {
     });
   };
 
-  removeItem = (id, listID) => {
-    let s = this.state.items ? [...this.state.list] : [];
+  removeItem = (id) => {
+    let s = this.state.list ? [...this.state.list] : [];
     s.forEach((list, index) => {
-      if (list.id === listID) {
-        s[index].items = s[index].items.filter((ele, i) => ele);
+      if (list.id === this.state.list[this.state.currentList].id) {
+        s[index].items = s[index].items.filter((ele, i) => ele.id !== id);
       }
     });
 
     if (this.state.isLoggedIn) {
-      database.default.removeFromList(this.state.id, id);
+      database.default.removeFromList(this.state.id, s);
     }
 
     this.setState({
       list: s
     });
   };
+
+  checkItem = (id) => {
+    let s = this.state.list ? [...this.state.list] : [];
+
+    s.forEach((list, index) => {
+      if (list.id === this.state.list[this.state.currentList].id) {
+        s[index].items.forEach((ele, i) => {
+          if(ele.id === id) {
+            ele.completed = !ele.completed
+          }
+        });
+      }
+    });
+
+    if (this.state.isLoggedIn) {
+      database.default.updateItem(this.state.id, s);
+    }
+
+    this.setState({
+      list: s
+    });
+  }
 
   getUser = () => {
     if (!this.state.isLoggedIn && this.state.isSignUpOpen) {
@@ -240,6 +278,10 @@ class MyProvider extends Component {
     }
   };
 
+  componentDidMount() {
+    this.fetchlist()
+  }
+
   render() {
     return (
       <Provider
@@ -260,7 +302,8 @@ class MyProvider extends Component {
           addItem: this.addItem,
           removeItem: this.removeItem,
           addUser: this.addUser,
-          getUser: this.getUser
+          getUser: this.getUser,
+          checkItem: this.checkItem
         }}
       >
         {this.props.children}{" "}

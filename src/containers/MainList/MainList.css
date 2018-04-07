@@ -1,0 +1,24 @@
+.MainList {
+    margin-top: 2em;
+    color: rgb(82, 82, 82);
+  }
+
+  
+  .MainList__greetings {
+    margin: 0em 1em;
+    margin-bottom: 1em;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .MainList__greetings span {
+    margin-top: 1em;
+    font-size: 1.4em;
+  }
+  
+  .MainList__noItem {
+    margin-left: 2em;
+    font-size: 20px;
+  }
+  

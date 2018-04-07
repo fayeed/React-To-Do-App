@@ -1,13 +1,19 @@
-import React from 'react';
+import React from "react";
 
-import classes from './SideButton.css';
+import { Consumer } from "../../contexts/MyProvider";
+
+import classes from "./SideButton.css";
 
 const Sidebutton = () => {
-    return (
-        <div className={classes.Sidebutton}>
-            <i className={classes.Sidebutton__icon} />
+  return (
+    <Consumer>
+      {context => (
+        <div className={classes.Sidebutton} onClick={context.toggleInput}>
+          <i className={classes.Sidebutton__icon} />
         </div>
-    )
-}
+      )}
+    </Consumer>
+  );
+};
 
 export default Sidebutton;
